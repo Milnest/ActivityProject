@@ -2,6 +2,7 @@
     <string name="app_name">ActivityProject</string>
     <string name="send">Send to 2nd activity</string>
     <string name="newApp">Open new app</string>
+    <string name="sendApp">Send</string>
     <string name="info">Click send</string>
     <string name="defaultValue">Default value</string>
 </resources>

@@ -58,13 +58,34 @@ public class ActivityOne extends AppCompatActivity {
             case R.id.newAppButton :
                 openNewApp();
                 break;
+            case R.id.smsButton :
+                openSendApp();
+                break;
         }
-
     }
 
-    private void openNewApp() {
-        Uri address = Uri.parse("http://yandex.ru");
-        Intent newAppIntent = new Intent(Intent.ACTION_VIEW, address);
+    /** Запускает активити через неяный интент из списка доступных приложений для отправки данных.
+     * Из списка может быть выбрано приложение ActivityProjectSecond.*/
+    private void openSendApp() {
+        String text = "text";
+        Intent newAppIntent = new Intent();
+        newAppIntent.setAction(Intent.ACTION_SEND);
+        newAppIntent.setType("text/plain");
+        newAppIntent.putExtra(Intent.EXTRA_TEXT, text);
         startActivity(newAppIntent);
     }
+
+    /** Запускает аткивити через неявный интент.
+     * Из списка может быть выбрано приложение ActivityProjectSecond.*/
+    private void openNewApp() {
+        String address = "http://yandex.ru";
+        Intent newAppIntent = new Intent();
+        newAppIntent.setAction(Intent.ACTION_VIEW);
+        newAppIntent.putExtra(Intent.EXTRA_TEXT, address);
+        if(newAppIntent.resolveActivity(getPackageManager()) != null){
+            startActivity(newAppIntent);
+        }
+    }
+
+
 }
